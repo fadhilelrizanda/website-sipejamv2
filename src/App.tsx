@@ -100,10 +100,10 @@ function App() {
   const slice_param = 20;
   const kb1_data = processData(vehicleChart, "kb1", slice_param);
   const kc1_data = processData(vehicleChart, "kc1", slice_param);
-  const s1_data = processData(vehicleChart, "s1", slice_param);
+  const s1_data = processData(vehicleChart, "s1", slice_param + 10);
   const kb2_data = processData(vehicleChart, "kb2", slice_param);
   const kc2_data = processData(vehicleChart, "kc2", slice_param);
-  const s2_data = processData(vehicleChart, "s2", slice_param);
+  const s2_data = processData(vehicleChart, "s2", slice_param + 10);
   const color1 = "rgba(227, 204, 174, 1)";
   const color2 = "rgba(92, 131, 116, 1)";
   const color3 = "rgba(38, 42, 86, 1)";
@@ -130,7 +130,7 @@ function App() {
 
   const kb1_data_chart = data_chart(
     kb1_data.collected_data,
-    "Total Kendaraan Besar",
+    "Total Kendaraan Besar (1 Jam Terakhir)",
     kb1_data.dates,
     color1
   );
@@ -138,7 +138,7 @@ function App() {
 
   const kc1_data_chart = data_chart(
     kc1_data.collected_data,
-    "Total Kendaraan Kecil",
+    "Total Kendaraan Kecil (1 jam terakhir)",
     kc1_data.dates,
     color2
   );
@@ -146,15 +146,15 @@ function App() {
 
   const s1_data_chart = data_chart(
     s1_data.collected_data,
-    "Total Kendaraan Kecil",
+    "Total Kendaraan Kecil (1 jam terakhir)",
     s1_data.dates,
     color3
   );
-  const s1_option = options("Kecepatan Kendaraan");
+  const s1_option = options("Kecepatan Kendaraan (km/jam)");
 
   const kb2_data_chart = data_chart(
     kb2_data.collected_data,
-    "Total Kendaraan Kecil",
+    "Kecepatan Kendaraan Terakhir",
     kb2_data.dates,
     color1
   );
@@ -162,7 +162,7 @@ function App() {
 
   const kc2_data_chart = data_chart(
     kc2_data.collected_data,
-    "Total Kendaraan Kecil",
+    "Total Kendaraan Kecil (1 jam terakhir)",
     kc2_data.dates,
     color2
   );
@@ -170,11 +170,11 @@ function App() {
 
   const s2_data_chart = data_chart(
     s2_data.collected_data,
-    "Total Kendaraan Kecil",
+    "Kecepatan Kendaraan Terakhir",
     s2_data.dates,
     color3
   );
-  const s2_option = options("Kecepatan Kendaraan");
+  const s2_option = options("Kecepatan Kendaraan (km/jam)");
 
   return (
     <>
@@ -208,12 +208,12 @@ function App() {
           <h3 className="head1">Overview</h3>
           <h3 className="head2 mt-2">Camera 1</h3>
 
-          <div className="col c-card">
+          <div className="col-5 c-card">
             <h3 className="card-title">Jumlah Kendaraan Besar</h3>
             <Line options={kb1_option} data={kb1_data_chart} />
           </div>
 
-          <div className="col c-card offset-md-1">
+          <div className="col-5 c-card offset-md-1">
             <h3 className="card-title">Jumlah Kendaraan Kecil</h3>
             <Line options={kc1_option} data={kc1_data_chart} />
           </div>
@@ -221,7 +221,7 @@ function App() {
         {/* </div> */}
 
         <div className="row justify-content-center mt-4">
-          <div className="col-8 c-card">
+          <div className="col-5 c-card">
             <h3 className="card-title">Kecepatan Kendaraan</h3>
             <Line options={s1_option} data={s1_data_chart} />
           </div>
@@ -231,18 +231,18 @@ function App() {
         <div className="row justify-content-center">
           <h3 className="head2 mt-4">Camera 2</h3>
 
-          <div className="col c-card">
+          <div className="col-5 c-card">
             <h3 className="card-title">Jumlah Kendaraan Besar</h3>
             <Line options={kb2_option} data={kb2_data_chart} />
           </div>
 
-          <div className="col c-card offset-md-1">
+          <div className="col-5 c-card offset-md-1">
             <h3 className="card-title">Jumlah Kendaraan Kecil</h3>
             <Line options={kc2_option} data={kc2_data_chart} />
           </div>
         </div>
         <div className="row justify-content-center mt-4">
-          <div className="col-8 c-card">
+          <div className="col-5 c-card">
             <h3 className="card-title">Kecepatan Kendaraan</h3>
             <Line options={s2_option} data={s2_data_chart} />
           </div>
